@@ -1,1 +1,24 @@
-
+1.	Initialize main program – provide main input file name 
+2.	Read main file with list of sources to array
+3.	Initialize empty global logic tree object – will add to this as source input is looped
+4.	Loop over source list. For each source
+  a.	Read input file
+  b.	Create source object
+    i.	Initialize source variables by invoking instance of source class
+    ii.	Populate source variables by reading input file 
+  c.	Process source (this step is for area sources e.g., tranzone) 
+  d.	Create logic tree node for source
+  e.	Add source node to global logic tree object
+5.	Process GMPEs, if desired and not already done (put into table, e.g., haztable)
+6.	Initialize end branch hazard data structures and mean hazard arrays
+7.	Compute end-branch hazard
+  a.	Loop unique branch list
+    i.	Loop Magnitudes
+      1.	Loop M-A scaling relationship
+        a.	Loop rupture propagation/ distances
+          i.	Loop Frequencies
+            1.	Loops GMPEs
+              a.	Loop amplitudes
+                i.	Compute and store P[exceed]
+                ii.	Compute and store weighted contribution to mean hazard
+8.	Post-process hazard
